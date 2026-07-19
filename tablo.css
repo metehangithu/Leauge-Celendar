@@ -1,0 +1,125 @@
+body {
+    background-color: rgb(255, 237, 214); /* Diğer sayfalarla aynı arka plan */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Tablo sayfası için kartı biraz daha genişlettik */
+.card-table {
+    background-color: rgb(170, 170, 154);
+    width: 90%;
+    max-width: 950px;
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Hafif gölge derinlik katar */
+}
+
+.başlik {
+    color: rgb(168, 255, 181);
+    margin: 0 0 30px 0;
+    font-size: 32px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Tablo Konteyneri (Mobil uyumluluk için sağa-sola kayabilsin) */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* Modern Puan Durumu Tablosu */
+.puan-tablosu {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2c2c2c; /* Koyu tema tabloyu öne çıkarır */
+    color: #f5f5f5;
+    font-size: 16px;
+    min-width: 600px; /* Sütunlar sıkışmasın */
+}
+
+/* Tablo Başlığı */
+.puan-tablosu thead tr {
+    background-color: rgb(201, 176, 91); /* Senin form rengin */
+    color: #1a1a1a;
+    text-align: center;
+    font-weight: 700;
+}
+
+.puan-tablosu th, 
+.puan-tablosu td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #444;
+}
+
+/* Satırların birbirini takip ederken gözü yormaması için renk değişimi */
+.puan-tablosu tbody tr:nth-of-type(even) {
+    background-color: #333333;
+}
+
+/* Fareyle satırın üzerine gelince hafifçe aydınlansın */
+.puan-tablosu tbody tr:hover {
+    background-color: #3e3e3e;
+    transition: background 0.2s ease;
+}
+
+/* İlk 3 takımı (Şampiyonluk/Üst sıra) ve son 3 takımı (Düşme hattı) vurgulamak istersen */
+.puan-tablosu tbody tr:nth-of-type(-n+3) td:first-child {
+    color: #ffd700; /* Altın sarısı sıra numarası */
+    font-weight: bold;
+}
+
+/* Buton Alanı */
+.buton-lar {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-aksiyon {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    transition: transform 0.1s ease, opacity 0.2s;
+}
+
+.btn-aksiyon:active {
+    transform: scale(0.98);
+}
+
+.btn-sifirla {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn-sifirla:hover {
+    background-color: #c9302c;
+}
+
+.btn-geri {
+    background-color: #5bc0de;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-geri:hover {
+    background-color: #31b0d5;
+}

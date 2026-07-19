@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(156, 202, 228);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.card{
+    background-color: rgb(170, 170, 154);
+    align-items: center;
+    width: 20%;
+    padding: 7%;
+    text-align: center;
+    border-radius: 10px;
+}
+.text{
+text-align: center;
+margin: 5px;
+box-shadow: 5%;
+border-radius: 7px;
+padding: 5px;
+}
+.lig-ekle{
+    text-align: center;
+    margin-left: 3px;
+    border-radius: 5px;
+    background-color: rgb(233, 221, 205);
+    color: black;
+}
+.devam{
+    text-align: center;
+    border-radius: 7px;
+    margin-top: 20px;
+    
+}
+.devam-link{
+    text-decoration: none;
+    color: black;
+}

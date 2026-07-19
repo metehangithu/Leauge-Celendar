@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puan Durumu</title>
+    <link rel="stylesheet" href="tablo.css">
+</head>
+<body>
+
+<div class="card-table">
+    <h2 class="başlik">Puan Durumu</h2>
+    
+    <div class="table-container">
+        <table class="puan-tablosu">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Takım Adı</th>
+                    <th>Lig</th>
+                    <th>AG</th>
+                    <th>YG</th>
+                    <th>AV</th>
+                    <th>Puan</th>
+                </tr>
+            </thead>
+            <tbody id="puanTablosuBody">
+                <!-- JavaScript burayı dolduracak -->
+            </tbody>
+        </table>
+    </div>
+    
+<div class="buton-lar">
+    <!-- Link 'takim.html' olarak senkronize edildi -->
+    <a href="takim.html" class="btn-aksiyon btn-geri">← Takım Eklemeye Dön</a>
+    
+    <button onclick="if(confirm('Tüm verileri silmek istediğinize emin misiniz?')) { localStorage.clear(); location.href='index.html'; }" class="btn-aksiyon btn-sifirla">
+        Her Şeyi Sıfırla
+    </button>
+</div>
+</div>
+
+<script src="tablo.js"></script>
+</body>
+</html>

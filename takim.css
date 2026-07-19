@@ -1,0 +1,78 @@
+body {
+    background-color: rgb(255, 237, 214);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif; /* Yazı tipi daha düzgün dursun diye eklendi */
+}
+
+.card-2 {
+    background-color: rgb(170, 170, 154);
+    width: 350px; /* Yüzde yerine sabit genişlik taşmaları önler */
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Elemanları alt alta dizer */
+    align-items: center;
+}
+
+.başlik {
+    color: rgb(168, 255, 181);
+    margin: 0 0 20px 0; /* Sadece alta boşluk bıraktık, yukarıyı sıfırladık */
+    font-size: 28px;
+    text-align: center;
+}
+
+.forms {
+    background-color: rgb(201, 176, 91);
+    padding: 20px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column; /* Form içindeki elemanların alt alta gelmesini sağlar */
+    align-items: center;
+    width: 100%; /* Kartın içine tam otursun */
+    box-sizing: border-box; /* Padding'in genişliği aşmasını engeller */
+    gap: 15px; /* Elemanların arasına eşit boşluk bırakır */
+}
+
+/* Form elemanlarını daha düzenli göstermek için ekstra dokunuşlar */
+.text-class {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.select-lig, .takim-ekle, .son-sayfa-gecis {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.son-sayfa-gecis {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.devam-link {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.devamin-devami {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
