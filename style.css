@@ -1,41 +1,91 @@
-body{
-    background-color: rgb(156, 202, 228);
+body {
+    background-color: rgb(255, 237, 214); /* Diğer sayfalarla uyumlu krem arka plan */
     margin: 0;
-    padding: 0;
+    padding: 15px; /* Mobilde kenarlara sıfır yapışmasın diye iç boşluk */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    font-family: sans-serif;
+    box-sizing: border-box;
 }
-.card{
+
+/* Tüm elementlerin padding değerlerini genişliğe dahil ediyoruz (Taşmayı önler) */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.card {
     background-color: rgb(170, 170, 154);
-    align-items: center;
-    width: 20%;
-    padding: 7%;
-    text-align: center;
+    width: 100%;
+    max-width: 380px; /* Telefonlarda tam sığar, bilgisayarda çok büyümesini engeller */
+    padding: 30px 20px;
     border-radius: 10px;
-}
-.text{
-text-align: center;
-margin: 5px;
-box-shadow: 5%;
-border-radius: 7px;
-padding: 5px;
-}
-.lig-ekle{
+    display: flex;
+    flex-direction: column; /* Elemanları alt alta dizer */
+    align-items: center;
     text-align: center;
-    margin-left: 3px;
-    border-radius: 5px;
-    background-color: rgb(233, 221, 205);
-    color: black;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.devam{
-    text-align: center;
-    border-radius: 7px;
-    margin-top: 20px;
-    
+
+h1 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 28px;
 }
-.devam-link{
-    text-decoration: none;
+
+.text {
+    color: rgb(168, 255, 181);
+    font-size: 20px;
+    margin: 0 0 25px 0;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Input ve buton arasına temiz boşluk bırakır */
+    margin-bottom: 20px;
+}
+
+#ligAdi {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px; /* Mobilde zoom yapmayı engellemek için ideal boyut */
+}
+
+.lig-ekle {
+    background-color: rgb(201, 176, 91);
     color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+}
+
+.devam-link {
+    width: 100%;
+    text-decoration: none; /* Link alt çizgisini kaldırır */
+}
+
+.devam {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.devam:hover {
+    background-color: #444;
 }
