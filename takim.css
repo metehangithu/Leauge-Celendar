@@ -6,22 +6,22 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: sans-serif; /* Yazı tipi daha düzgün dursun diye eklendi */
+    font-family: sans-serif;
 }
 
 .card-2 {
     background-color: rgb(170, 170, 154);
-    width: 350px; /* Yüzde yerine sabit genişlik taşmaları önler */
+    width: 350px; 
     padding: 30px;
     border-radius: 10px;
     display: flex;
-    flex-direction: column; /* Elemanları alt alta dizer */
+    flex-direction: column; 
     align-items: center;
 }
 
 .başlik {
     color: rgb(168, 255, 181);
-    margin: 0 0 20px 0; /* Sadece alta boşluk bıraktık, yukarıyı sıfırladık */
+    margin: 0 0 20px 0; 
     font-size: 28px;
     text-align: center;
 }
@@ -31,14 +31,13 @@ body {
     padding: 20px;
     border-radius: 7px;
     display: flex;
-    flex-direction: column; /* Form içindeki elemanların alt alta gelmesini sağlar */
+    flex-direction: column;
     align-items: center;
-    width: 100%; /* Kartın içine tam otursun */
-    box-sizing: border-box; /* Padding'in genişliği aşmasını engeller */
-    gap: 15px; /* Elemanların arasına eşit boşluk bırakır */
+    width: 100%; 
+    box-sizing: border-box; 
+    gap: 15px; 
 }
 
-/* Form elemanlarını daha düzenli göstermek için ekstra dokunuşlar */
 .text-class {
     margin: 0;
     text-align: center;
@@ -75,4 +74,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+input[type="text"] {
+    text-transform: uppercase;
 }
