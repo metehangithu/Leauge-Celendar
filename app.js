@@ -5,23 +5,25 @@ let ligler = JSON.parse(localStorage.getItem("ligler")) || [];
 
 form.addEventListener("submit" ,function(e){
     e.preventDefault();
-    const ligAdi = ligInput.value.trim();
+    
+    // `.toLocaleUpperCase('tr-TR')` ile girilen lig adını otomatik Türkçe BÜYÜK HARFE çeviriyoruz
+    const ligAdi = ligInput.value.trim().toLocaleUpperCase('tr-TR');
 
-    // Boş mu giriliyor diye bir kontrol mekanizması
     if(ligAdi === ""){
         alert("Lütfen bir lig adı giriniz.");
         ligInput.focus();
         return;
     }
 
-    // Aynı ligden var mı yok mu kontrolü
+    // Aynı lig var mı kontrolü (Artık hepsi büyük harf olduğu için direkt eşitlik kontrolü yeterli)
     const ligVarmi = ligler.some(function(lig){
-        return lig.isim.toLowerCase() === ligAdi.toLowerCase();
+        const mevcutIsim = typeof lig === 'object' ? lig.isim : lig;
+        return mevcutIsim === ligAdi;
     });
 
     if(ligVarmi){
         alert("Aynı Ligi girmeyiniz");
-        ligInput.value = ""; // Aynı lig girildiğinde kutuyu temizler
+        ligInput.value = "";
         ligInput.focus();
         return;
     }
@@ -32,15 +34,9 @@ form.addEventListener("submit" ,function(e){
     };
 
     ligler.push(yeniLig);
-
-    // Storage'a kaydet
     localStorage.setItem("ligler", JSON.stringify(ligler));
 
-    console.log(ligler);
-
     alert("Lig başarıyla eklendi.");
-
-    // Başarılı eklemeden sonra kutuyu temizler ve odaklar
     ligInput.value = "";
     ligInput.focus(); 
 });
