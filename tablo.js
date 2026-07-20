@@ -11,13 +11,12 @@ let takimlar = JSON.parse(localStorage.getItem('takimlar')) || [];
     const tbody = document.getElementById('puanTablosuBody');
     
     if(takimlar.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7">Henüz hiç takım eklenmedi.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6">Henüz hiç takım eklenmedi.</td></tr>`;
     } else {
         tbody.innerHTML = takimlar.map((takim, index) => `
             <tr>
                 <td>${index + 1}</td>
                 <td><strong>${takim.ad}</strong></td>
-                <td>${takim.lig}</td>
                 <td>${takim.attigi}</td>
                 <td>${takim.yedigi}</td>
                 <td>${takim.averaj}</td>
