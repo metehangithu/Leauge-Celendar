@@ -1,7 +1,7 @@
 body {
-    background-color: rgb(255, 237, 214); /* Diğer sayfalarla uyumlu krem arka plan */
+    background-color: rgb(255, 237, 214); 
     margin: 0;
-    padding: 15px; /* Mobilde kenarlara sıfır yapışmasın diye iç boşluk */
+    padding: 15px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,8 +9,6 @@ body {
     font-family: sans-serif;
     box-sizing: border-box;
 }
-
-/* Tüm elementlerin padding değerlerini genişliğe dahil ediyoruz (Taşmayı önler) */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -44,7 +42,7 @@ h1 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Input ve buton arasına temiz boşluk bırakır */
+    gap: 15px; /* Input ve buton arasına  boşluk bırakır */
     margin-bottom: 20px;
 }
 
@@ -53,7 +51,7 @@ h1 {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 16px; /* Mobilde zoom yapmayı engellemek için ideal boyut */
+    font-size: 16px; 
 }
 
 .lig-ekle {
@@ -70,7 +68,7 @@ h1 {
 
 .devam-link {
     width: 100%;
-    text-decoration: none; /* Link alt çizgisini kaldırır */
+    text-decoration: none; 
 }
 
 .devam {
@@ -88,4 +86,7 @@ h1 {
 
 .devam:hover {
     background-color: #444;
+}
+input[type="text"] {
+    text-transform: uppercase;
 }
