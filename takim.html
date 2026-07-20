@@ -10,8 +10,6 @@
    <div class="card-2">
     <h2 class="başlik">Bir Takım Ekleyiniz </h2>
     
-    <p id="sayac" style="color: white; margin-bottom: 10px; font-weight: bold;"></p>
-
     <form class="forms" id="takimForm">
         <p class="text-class">Oluşturduğunuz liglerden istediğiniz ligi seçip takımı ekleyiniz</p>
         
@@ -19,15 +17,17 @@
             <option value="" disabled selected>Lütfen bir lig seçiniz</option>
         </select>
         
+        <p id="sayac" style="color: white; margin: 10px 0; font-weight: bold; text-align: center;"></p>
+
         <input class="takim-ekle" id="takimAdi" type="text" placeholder="Bir takım yazınız" required>
         <button class="son-sayfa-gecis" type="submit">Ekleyiniz</button>
     </form>
 
-    <!-- EKLEME: Eklenen takımları ve sil butonlarını göreceğimiz yeni alan -->
-    <div id="eklenenTakimlarListesi" style="width: 100%; margin-top: 20px; max-height: 200px; overflow-y: auto; color: white;"></div>
+    <div id="eklenenTakimlarListesi" style="width: 100%; margin-top: 15px; max-height: 180px; overflow-y: auto; color: white;"></div>
 
-    <a href="tablo.html" class="devam-link">
-        <button class="devamin-devami">Devam et</button>
+    <!-- Yeni Sayfaya Yönlendiren Buton -->
+    <a href="fikstur.html" class="devam-link" style="margin-top: 15px; display: block; text-decoration: none;">
+        <button class="devamin-devami" style="width: 100%;">Fikstür Oluştur →</button>
     </a>
 </div>
 <script src="takim.js"></script>
