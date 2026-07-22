@@ -3,33 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takım Ekle</title>
-    <link rel="stylesheet" href="takim.css">
+    <title>Takım Yönetimi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="card-2">
-    <h2 class="başlik">Bir Takım Ekleyiniz </h2>
-    
-    <form class="forms" id="takimForm">
-        <p class="text-class">Oluşturduğunuz liglerden istediğiniz ligi seçip takımı ekleyiniz</p>
+
+<div class="ana-konteyner">
+
+    <!-- SOL PANEL: Lig Seçimi ve Takım Sayısı Belirleme -->
+    <div class="card sol-panel">
+        <h3 style="color: white; margin-top: 0; text-align: center;">Lig ve Takım Limiti</h3>
         
-        <select class="select-lig" id="ligSecimi">
-            <option value="" disabled selected>Lütfen bir lig seçiniz</option>
+        <label style="color: white; font-size: 13px; margin-bottom: 5px; display: block;">Ligi Seçin:</label>
+        <select id="ligSecimi" style="margin-bottom: 15px;">
+            <option value="" disabled selected>Bir lig seçiniz...</option>
         </select>
-        
-        <p id="sayac" style="color: white; margin: 10px 0; font-weight: bold; text-align: center;"></p>
 
-        <input class="takim-ekle" id="takimAdi" type="text" placeholder="Bir takım yazınız" required>
-        <button class="son-sayfa-gecis" type="submit">Ekleyiniz</button>
-    </form>
+        <div id="kotaAyarKutusu" style="width: 100%; display: none; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+            <label style="color: #4dfa8b; font-size: 13px; font-weight: bold; margin-bottom: 5px; display: block;">Bu Lig Kaç Takımlı Olsun?</label>
+            <div style="display: flex; gap: 8px;">
+                <input type="number" id="hedefInput" min="2" max="30" placeholder="Örn: 18 veya 20" style="padding: 8px;">
+                <button id="kotaKaydetBtn" style="background: #2196F3; color: white; padding: 8px 12px; font-size: 13px; white-space: nowrap;">Kaydet</button>
+            </div>
+        </div>
 
-    <div id="eklenenTakimlarListesi" style="width: 100%; margin-top: 15px; max-height: 180px; overflow-y: auto; color: white;"></div>
+        <div id="sayac" style="color: #4dfa8b; font-weight: bold; text-align: center; margin-top: 10px; font-size: 15px;"></div>
+    </div>
 
-    <!-- Yeni Sayfaya Yönlendiren Buton -->
-    <a href="fikstur.html" class="devam-link" style="margin-top: 15px; display: block; text-decoration: none;">
-        <button class="devamin-devami" style="width: 100%;">Fikstür Oluştur →</button>
-    </a>
+    <!-- SAĞ PANEL: Takım Ekleme Formu ve Eklenen Takımlar Listesi -->
+    <div class="card sag-panel">
+        <h3 style="color: white; margin-top: 0; text-align: center;">Takımları Girin</h3>
+
+        <form id="takimForm" style="width: 100%;">
+            <input type="text" id="takimAdi" placeholder="TAKIM ADINI GİRİNİZ" required style="margin-bottom: 10px;">
+            <button class="lig-ekle" type="submit" id="takimEkleBtn" disabled>Takımı Ekle</button>
+        </form>
+
+        <div id="eklenenTakimlarListesi" style="width: 100%; margin-top: 15px; max-height: 250px; overflow-y: auto;"></div>
+
+        <a href="fikstur.html" class="devam-link" style="margin-top: 15px; display: block; text-decoration: none; width: 100%;">
+            <button class="devam" style="width: 100%;">Fikstür Oluştur →</button>
+        </a>
+    </div>
+
 </div>
+
 <script src="takim.js"></script>
 </body>
 </html>
