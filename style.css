@@ -1,92 +1,123 @@
-body {
-    background-color: rgb(255, 237, 214); 
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(255, 237, 214);
     margin: 0;
-    padding: 15px; 
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: sans-serif;
-    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-.card {
-    background-color: rgb(170, 170, 154);
-    width: 100%;
-    max-width: 380px; /* Telefonlarda tam sığar, bilgisayarda çok büyümesini engeller */
-    padding: 30px 20px;
-    border-radius: 10px;
+.ana-konteyner {
     display: flex;
-    flex-direction: column; /* Elemanları alt alta dizer */
+    flex-direction: row;        /* Sol ve sağ paneli yan yana yerleştirir */
+    justify-content: center;    /* Ekranın tam ortasına hizalar */
+    align-items: flex-start;    /* Üst kenarları hizalar */
+    gap: 35px;                  /* İki kart arasındaki estetik boşluk */
+    width: 100%;
+    max-width: 950px;           /* Ekranda dengeli durması için maksimum genişlik */
+    margin: 0 auto;
+}
+.card {
+    background-color: #a3a69a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-
-h1 {
-    color: white;
+.sol-panel, .sag-panel {
+    flex: 1;
+    min-width: 320px;
+}
+.baslik {
     margin: 0 0 10px 0;
-    font-size: 28px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
 }
-
-.text {
-    color: rgb(168, 255, 181);
-    font-size: 20px;
-    margin: 0 0 25px 0;
+.alt-başlik {
+    color: #4dfa8b;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
 }
-
-.form {
+#ligForm {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Input ve buton arasına  boşluk bırakır */
-    margin-bottom: 20px;
+    gap: 10px;
 }
 
-#ligAdi {
+input[type="text"] {
+    text-transform: uppercase; /* Kullanıcı yazarken harfleri büyük gösterir */
+}
+input, select {
     width: 100%;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 16px; 
+    font-size: 15px;
+    outline: none;
+}
+input:focus, select:focus {
+    border-color: #2196F3;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 .lig-ekle {
-    background-color: rgb(201, 176, 91);
+    background-color: #c9b067;
     color: black;
     padding: 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
     width: 100%;
+    font-size: 15px;
+}
+
+.lig-ekle:hover {
+    background-color: #b59d57;
+}
+
+.devam {
+    background-color: #383838;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.devam:hover {
+    background-color: #242424;
 }
 
 .devam-link {
     width: 100%;
-    text-decoration: none; 
 }
+/* MOBİL VE KÜÇÜK EKRAN UYUMU */
+@media (max-width: 768px) {
+    .ana-konteyner {
+        flex-direction: column; /* Mobil cihazlarda panelleri alt alta getirir */
+        align-items: center;
+        gap: 20px;
+    }
 
-.devam {
-    width: 100%;
-    padding: 12px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background 0.2s;
-}
-
-.devam:hover {
-    background-color: #444;
-}
-input[type="text"] {
-    text-transform: uppercase;
+    .sol-panel, .sag-panel {
+        width: 100%;
+    }
 }
