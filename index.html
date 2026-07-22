@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lig Ekle</title>
+    <title>Lig Seçim Paneli</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h1>HOŞGELDİNİZ</h1>
-    <h2 class="text">Lütfen Bir Lig Ekleyiniz</h2>
-    <form class="form">
-        <input id="ligAdi" type="text" placeholder="Lig Adını Giriniz">
-        <button class="lig-ekle"><i>Ekleyiniz</i></button>
-    </form>
-    <a href="takim.html" class="devam-link">
-        <button class="devam">Devam et</button>
-    </a>
-  </div>
+
+<div class="ana-konteyner">
+    
+    <!-- SOL PANEL: Seçilen Liglerin Listelendiği Alan -->
+    <div class="card sol-panel">
+        <h3 style="color: white; margin-top: 0; text-align: center;">Seçilen Ligler</h3>
+        <div id="eklenenLiglerListesi" style="width: 100%; min-height: 150px;"></div>
+    </div>
+
+    <!-- SAĞ PANEL: Lig Seçme Formu -->
+    <div class="card sag-panel">
+        <h2 class="başlik">HOŞGELDİNİZ</h2>
+        <p class="alt-başlik">Lütfen Düzenlenecek Bir Lig Seçiniz</p>
+        
+        <form id="ligForm">
+            <select id="hazirLiglerSelect" required style="width: 100%; padding: 12px; border-radius: 6px; font-size: 15px; margin-bottom: 15px;">
+                <option value="" disabled selected>Bir lig seçiniz...</option>
+            </select>
+
+            <button class="lig-ekle" type="submit">Ligi Ekle</button>
+        </form>
+
+        <a href="takim.html" class="devam-link" style="margin-top: 15px; display: block; text-decoration: none;">
+            <button class="devam" style="width: 100%;">Devam Et →</button>
+        </a>
+    </div>
+
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
