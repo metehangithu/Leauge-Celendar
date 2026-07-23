@@ -1,5 +1,6 @@
 let ligler = JSON.parse(localStorage.getItem('ligler')) || [];
 let takimlar = JSON.parse(localStorage.getItem('takimlar')) || [];
+let ligKotalari = JSON.parse(localStorage.getItem('ligKotalari')) || {};
 
 const ligSecimi = document.getElementById('fiksturLigSecimi');
 const macKurmaAlani = document.getElementById('macKurmaAlani');
@@ -10,6 +11,7 @@ const depSkorInput = document.getElementById('depSkorInput');
 const macEkleBtn = document.getElementById('macEkleBtn');
 const eklenenMaclarListesi = document.getElementById('eklenenMaclarListesi');
 const kaydetBtn = document.getElementById('sonuclariKaydetBtn');
+const bayKutusu = document.getElementById('bayKutusu');
 
 let eklenenMaclar = [];
 
@@ -28,25 +30,19 @@ ligSecimi.addEventListener('change', function() {
     dropdownlariGuncelle();
 });
 
-// KRİTİK FONKSİYON: Çift Sayı Kontrolü & Maç Yapan Takımları Düşme
+// KRİTİK FONKSİYON: Otomatik BAY Takımı Tespit Mantığı
 function dropdownlariGuncelle() {
     const secilenLig = ligSecimi.value;
     if(!secilenLig) return;
 
     const tumLigTakimlari = takimlar.filter(t => t.lig === secilenLig);
+    const hedefSayi = ligKotalari[secilenLig] || 20;
 
-    // 1. KONTROL: En az 2 takım olmalı
-    if(tumLigTakimlari.length < 2) {
-        alert("Fikstür oluşturabilmek için bu lige en az 2 takım eklemiş olmalısınız!");
+    // Tam sayı kontrolü
+    if(tumLigTakimlari.length !== hedefSayi) {
+        alert(`Fikstür oluşturabilmek için ${secilenLig} liginde TAM OLARAK ${hedefSayi} takım olmalıdır!\n\nMevcut Takım Sayısı: ${tumLigTakimlari.length}\nTakım Ekleme sayfasına yönlendiriliyorsunuz.`);
         macKurmaAlani.style.display = "none";
-        return;
-    }
-
-    // 2. KONTROL (Senin İstediğin Kural): Takım sayısı ÇİFT olmak zorunda!
-    if(tumLigTakimlari.length % 2 !== 0) {
-        alert(`Sistemde Aksam Eşleşme Olmaması İçin Takım Sayısı ÇİFT Olmalıdır!\n\nSeçilen ligdeki mevcut takım sayısı: ${tumLigTakimlari.length}\nLütfen Takım Ekleme sayfasına dönüp 1 takım daha ekleyin veya çıkarın.`);
-        macKurmaAlani.style.display = "none";
-        // Takım ekleme sayfasına geri yönlendiriyoruz
+        bayKutusu.style.display = "none";
         window.location.href = "takim.html";
         return;
     }
@@ -65,14 +61,29 @@ function dropdownlariGuncelle() {
     evSahibiSelect.innerHTML = "";
     deplasmanSelect.innerHTML = "";
 
-    // Müsait takım kalmadığında (Tüm eşleşmeler bittiğinde)
-    if(musaitTakimlar.length === 0) {
+    // SİHRİ YAPTIĞIMIZ YER: Müsait takım 1 tane kaldıysa (Takım sayısı TEK demektir ve o takım BAY geçer)
+    if (musaitTakimlar.length === 1) {
+        bayKutusu.style.display = "block";
+        bayKutusu.innerHTML = `☕ <strong>${musaitTakimlar[0].ad}</strong> bu haftayı BAY (Maç yapmadan) geçiyor.`;
+        
+        evSahibiSelect.innerHTML = "<option>Tüm maçlar kuruldu</option>";
+        deplasmanSelect.innerHTML = "<option>Tüm maçlar kuruldu</option>";
+        evSahibiSelect.disabled = true;
+        deplasmanSelect.disabled = true;
+        macEkleBtn.disabled = true;
+    } 
+    // Müsait takım kalmadığında (Takım sayısı ÇİFT ise ve tüm eşleşmeler bittiğinde)
+    else if (musaitTakimlar.length === 0) {
+        bayKutusu.style.display = "none";
         evSahibiSelect.innerHTML = "<option>Tüm takımlar eşleşti</option>";
         deplasmanSelect.innerHTML = "<option>Tüm takımlar eşleşti</option>";
         evSahibiSelect.disabled = true;
         deplasmanSelect.disabled = true;
         macEkleBtn.disabled = true;
-    } else {
+    } 
+    // Henüz maç yapacak takımlar varken
+    else {
+        bayKutusu.style.display = "none";
         evSahibiSelect.disabled = false;
         deplasmanSelect.disabled = false;
         macEkleBtn.disabled = false;
@@ -89,7 +100,6 @@ function dropdownlariGuncelle() {
             deplasmanSelect.appendChild(opt2);
         });
 
-        // İkinci seçenekte varsayılan olarak farklı bir takım seçili gelsin
         if(deplasmanSelect.options.length > 1) {
             deplasmanSelect.selectedIndex = 1;
         }
@@ -99,7 +109,7 @@ function dropdownlariGuncelle() {
     listeyiGuncelle();
 }
 
-// 3. Kullanıcı "Maçı Fikstüre Ekle" butonuna bastığında
+// 3. Maçı Fikstüre Ekleme
 macEkleBtn.addEventListener('click', function() {
     const evTakim = evSahibiSelect.value;
     const depTakim = deplasmanSelect.value;
@@ -122,11 +132,10 @@ macEkleBtn.addEventListener('click', function() {
     evSkorInput.value = 0;
     depSkorInput.value = 0;
 
-    // Seçilen takımları dropdown'dan düşürmek için tekrar çağırıyoruz
     dropdownlariGuncelle();
 });
 
-// 4. Eklenen maçları ekranda listeleme
+// 4. Maçları Listeleme
 function listeyiGuncelle() {
     eklenenMaclarListesi.innerHTML = "";
 
@@ -149,13 +158,13 @@ function listeyiGuncelle() {
     kaydetBtn.style.display = "block";
 }
 
-// Listeden maç silindiğinde takımları tekrar havuza katma
+// Maç Silme
 window.macSil = function(index) {
     eklenenMaclar.splice(index, 1);
     dropdownlariGuncelle();
 }
 
-// 5. Sonuçları veritabanına işleme ve Tabloya fırlatma
+// 5. Sonuçları Kaydetme
 kaydetBtn.addEventListener('click', function() {
     eklenenMaclar.forEach(mac => {
         let evObj = takimlar.find(t => t.ad === mac.ev && t.lig === mac.lig);
@@ -181,7 +190,9 @@ kaydetBtn.addEventListener('click', function() {
         }
     });
 
+    localStorage.setItem('sezonBasladi', JSON.stringify(true));
     localStorage.setItem('takimlar', JSON.stringify(takimlar));
+
     alert("Oynanan tüm maçlar işlendi! Puan durumuna aktarılıyorsunuz.");
     window.location.href = "tablo.html";
 });
