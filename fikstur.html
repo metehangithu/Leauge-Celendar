@@ -8,17 +8,17 @@
 </head>
 <body>
 
-<h2 style="color: #333; text-align: center; margin-bottom: 15px;">Fikstür & Maç Simülasyonu</h2>
-
 <div class="card" style="max-width: 550px; width: 100%;">
-    <p style="color: white; margin-bottom: 8px;">1. Ligi Seçin:</p>
+    <h2 style="color: white; text-align: center; margin-top: 0; margin-bottom: 20px;">Fikstür & Maç Simülasyonu</h2>
+
+    <p style="color: white; margin-bottom: 8px; text-align: center;">1. Ligi Seçin:</p>
     <select id="fiksturLigSecimi" style="width: 100%; padding: 10px; border-radius: 6px; font-size: 16px; margin-bottom: 15px;">
         <option value="" disabled selected>Bir lig seçiniz</option>
     </select>
 
-    <!-- Maç Kurma Alanı (Lig seçilince görünecek) -->
+    <!-- Maç Kurma Alanı -->
     <div id="macKurmaAlani" style="display: none; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-        <p style="color: white; margin-top: 0; font-weight: bold; text-align: center;">2. Maç Eşleşmesini Kurun:</p>
+        <p style="color: white; margin-top: 0; font-weight: bold; text-align: center;">Maç Eşleşmesini Kurun:</p>
         
         <div style="display: flex; gap: 8px; align-items: center; justify-content: center; margin-bottom: 10px;">
             <select id="evSahibiSelect" style="width: 45%; padding: 8px; border-radius: 4px; border: none; font-size: 13px;"></select>
@@ -30,6 +30,9 @@
 
         <button id="macEkleBtn" class="lig-ekle" style="width: 100%; padding: 8px; background-color: #2196F3; color: white;">+ Maçı Fikstüre Ekle</button>
     </div>
+
+    <!-- YENİ: Otomatik Bay Geçen Takım Bilgi Kutusu -->
+    <div id="bayKutusu" style="display: none; background: #ff9800; color: black; font-weight: bold; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-size: 14px;"></div>
 
     <!-- Eklenen Maçların Listeleneceği Yer -->
     <div id="eklenenMaclarListesi" style="width: 100%; max-height: 200px; overflow-y: auto;"></div>
