@@ -8,8 +8,16 @@
 </head>
 <body>
 
-    <h2 class="başlik">Puan Durumu</h2>
+<h2 class="başlik-dis">Puan Durumu</h2>
+
 <div class="card-table">
+    <!-- YENİ: Lig Seçme/Filtreleme Kutusu -->
+    <div style="margin-bottom: 15px; text-align: center;">
+        <select id="tabloLigFiltre" style="padding: 10px; border-radius: 6px; font-size: 16px; min-width: 200px;">
+            <option value="" disabled selected>Görüntülenecek Ligi Seçin</option>
+        </select>
+    </div>
+
     <div class="table-container">
         <table class="puan-tablosu">
             <thead>
@@ -23,19 +31,17 @@
                 </tr>
             </thead>
             <tbody id="puanTablosuBody">
-                <!-- JavaScript burayı dolduracak -->
+                <!-- JavaScript burayı filtrelenmiş verilerle dolduracak -->
             </tbody>
         </table>
     </div>
     
-<div class="buton-lar">
-    <!-- Link 'takim.html' olarak senkronize edildi -->
-    <a href="takim.html" class="btn-aksiyon btn-geri">← Takım Eklemeye Dön</a>
-    
-    <button onclick="if(confirm('Tüm verileri silmek istediğinize emin misiniz?')) { localStorage.clear(); location.href='index.html'; }" class="btn-aksiyon btn-sifirla">
-        Her Şeyi Sıfırla
-    </button>
-</div>
+    <div class="buton-lar">
+        <a href="takim.html" class="btn-aksiyon btn-geri">← Takım Eklemeye Dön</a>
+        <button onclick="if(confirm('Tüm verileri silmek istediğinize emin misiniz?')) { localStorage.clear(); location.href='index.html'; }" class="btn-aksiyon btn-sifirla">
+            Her Şeyi Sıfırla
+        </button>
+    </div>
 </div>
 
 <script src="tablo.js"></script>
