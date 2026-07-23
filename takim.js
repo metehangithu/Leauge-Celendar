@@ -113,7 +113,7 @@ function takimlariListele() {
 // 5. Takım Silme İşlemi
 window.takimSil = function(index) {
     if (sezonBasladi) {
-        alert("Maçlar oynanmaya başladığı için kadroları değiştiremezsiniz / takım silemezsiniz!");
+        alert("Maçlar oynanmaya başladığı için takım silemezsiniz!");
         return;
     }
 
